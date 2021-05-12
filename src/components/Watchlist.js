@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
-import { MovieCard } from "./MovieCard";
+import MovieCard from "./MovieCard";
 
 const Watchlist = () => {
   const { watchlist } = useContext(GlobalContext);
@@ -29,4 +29,4 @@ const Watchlist = () => {
     </div>
   );
 };
-export default WatchList
+export default Watchlist

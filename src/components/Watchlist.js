@@ -1,9 +1,10 @@
 import React from 'react'
 
-export const WatchList = () => {
+const WatchList = () => {
     return (
         <div>
             <h1>WatchList Page</h1>
         </div>
     )
 }
+export default WatchList

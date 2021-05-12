@@ -1,17 +1,17 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import ResultCard from "./ResultCard"
 
 const Add = () => {
-  const [query, setQuery] = useState("")
-  const [results, setResults] = useState([])
-  const [queryLength, setQueryLength] = useState('')
-  
-  const handleClick = (e) => {
-    e.preventDefault()
-    setQuery(e.target.value)
 
+  const [search, setSearch] = useState("")
+  const [results, setResults] = useState([])
+  
+  useEffect(() => {
+
+  })
+    
     fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=${process.env.APP_KEY}&language=en-US&page=1&include_adult=false&query=${e.target.value}`
+      `https://api.themoviedb.org/3/search/movie?api_key=${process.env.APP_KEY}&language=en-US&page=1&include_adult=false&query=${search}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -21,17 +21,23 @@ const Add = () => {
           setResults([]);
         }
       })
-  }
+  
 
+  const updateSearch = (e) => {
+    setSearch(e.target.value)
+    console.log(search)
+  }
   return (
     <div className="add-page">
       <div className="container">
         <div className="add-content">
           <div className="input-wrapper">
-            <form className="submit-wrapper">
-            <input type="text" placeholder="Search for a movie" value={query}/>
-            <button className="submit-btn" onClick={handleClick()}>Submit</button>
-            </form>
+           <form className="form">
+             <input className="search-bar" type="text" value={search} onChange={updateSearch}/>
+             <button className="search-btn" type="submit">
+               Search
+             </button>
+           </form>
           </div>
 
           {results.length > 0 && (

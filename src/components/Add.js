@@ -30,7 +30,7 @@ const Add = () => {
           <div className="input-wrapper">
             <form className="submit-wrapper">
             <input type="text" placeholder="Search for a movie" value={query}/>
-            <button className="submit-btn" onClick={handleClick} />
+            <button className="submit-btn" onClick={handleClick()}>Submit</button>
             </form>
           </div>
 

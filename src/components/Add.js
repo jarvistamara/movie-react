@@ -4,10 +4,10 @@ import ResultCard from "./ResultCard"
 const Add = () => {
   const [query, setQuery] = useState("")
   const [results, setResults] = useState([])
-
-  const onChange = (e) => {
+  const [queryLength, setQueryLength] = useState('')
+  
+  const handleClick = (e) => {
     e.preventDefault()
-
     setQuery(e.target.value)
 
     fetch(
@@ -28,12 +28,10 @@ const Add = () => {
       <div className="container">
         <div className="add-content">
           <div className="input-wrapper">
-            <input
-              type="text"
-              placeholder="Search for a movie"
-              value={query}
-              onChange={onChange}
-            />
+            <form className="submit-wrapper">
+            <input type="text" placeholder="Search for a movie" value={query}/>
+            <button className="submit-btn" onClick={handleClick} />
+            </form>
           </div>
 
           {results.length > 0 && (

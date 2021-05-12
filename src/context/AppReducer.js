@@ -1,37 +1,37 @@
 export default (state, action) => {
   switch (action.type) {
-    case "ADD_RECIPE_TO_MYRECIPES":
+    case "ADD_MOVIE_TO_WATCHLIST":
       return {
         ...state,
-        myRecipes: [action.payload, ...state.myRecipes],
+        watchlist: [action.payload, ...state.watchlist],
       };
-    case "REMOVE_RECIPE_FROM_MYRECIPES":
+    case "REMOVE_MOVIE_FROM_WATCHLIST":
       return {
         ...state,
-        myRecipes: state.myRecipes.filter(
-          (hits) => hits.id !== action.payload
+        watchlist: state.watchlist.filter(
+          (movie) => movie.id !== action.payload
         ),
       };
-    case "ADD_RECIPE_TO_COOKED":
+    case "ADD_MOVIE_TO_WATCHED":
       return {
         ...state,
-        myRecipes: state.myRecipes.filter(
-          (hits) => hits.id !== action.payload.id
+        watchlist: state.watchlist.filter(
+          (movie) => movie.id !== action.payload.id
         ),
-        cooked: [action.payload, ...state.cooked],
+        watched: [action.payload, ...state.watched],
       };
-    case "MOVE_TO_MYRECIPES":
+    case "MOVE_TO_WATCHLIST":
       return {
         ...state,
-        cooked: state.cooked.filter(
-          (hits) => hits.id !== action.payload.id
+        watched: state.watched.filter(
+          (movie) => movie.id !== action.payload.id
         ),
-        cooked: [action.payload, ...state.cooked],
+        watchlist: [action.payload, ...state.watchlist],
       };
-    case "REMOVE_FROM_COOKED":
+    case "REMOVE_FROM_WATCHED":
       return {
         ...state,
-        cooked: state.cooked.filter((hits) => hits.id !== action.payload),
+        watched: state.watched.filter((movie) => movie.id !== action.payload),
       };
     default:
       return state;

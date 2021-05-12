@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import Moment from "react-moment";
-import { GlobalContext } from "../context/GlobalState";
+import React, { useContext } from "react"
+import Moment from "react-moment"
+import { GlobalContext } from "../context/GlobalState"
 
 const ResultCard = ({ movie }) => {
   const {
@@ -8,18 +8,18 @@ const ResultCard = ({ movie }) => {
     addMovieToWatched,
     watchlist,
     watched,
-  } = useContext(GlobalContext);
+  } = useContext(GlobalContext)
 
-  let storedMovie = watchlist.find((o) => o.id === movie.id);
-  let storedMovieWatched = watched.find((o) => o.id === movie.id);
+  let storedMovie = watchlist.find((o) => o.id === movie.id)
+  let storedMovieWatched = watched.find((o) => o.id === movie.id)
 
   const watchlistDisabled = storedMovie
     ? true
     : storedMovieWatched
     ? true
-    : false;
+    : false
 
-  const watchedDisabled = storedMovieWatched ? true : false;
+  const watchedDisabled = storedMovieWatched ? true : false
 
   return (
     <div className="result-card">
@@ -61,6 +61,6 @@ const ResultCard = ({ movie }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 export default ResultCard

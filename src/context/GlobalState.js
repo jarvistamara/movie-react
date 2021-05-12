@@ -3,11 +3,11 @@ import AppReducer from "./AppReducer";
 
 // initial state
 const initialState = {
-  myRecipes: localStorage.getItem("myRecipes")
-    ? JSON.parse(localStorage.getItem("myRecipes"))
+  watchlist: localStorage.getItem("watchlist")
+    ? JSON.parse(localStorage.getItem("watchlist"))
     : [],
-  cooked: localStorage.getItem("cooked")
-    ? JSON.parse(localStorage.getItem("cooked"))
+  watched: localStorage.getItem("watched")
+    ? JSON.parse(localStorage.getItem("watched"))
     : [],
 };
 
@@ -19,41 +19,41 @@ export const GlobalProvider = (props) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
   useEffect(() => {
-    localStorage.setItem("myRecipes", JSON.stringify(state.myRecipes));
-    localStorage.setItem("cooked", JSON.stringify(state.cooked));
+    localStorage.setItem("watchlist", JSON.stringify(state.watchlist));
+    localStorage.setItem("watched", JSON.stringify(state.watched));
   }, [state]);
 
   // actions
-  const addRecipeToMyRecipes = (hits) => {
-    dispatch({ type: "ADD_RECIPE_TO_MYRECIPES", payload: hits });
+  const addMovieToWatchlist = (movie) => {
+    dispatch({ type: "ADD_MOVIE_TO_WATCHLIST", payload: movie });
   };
 
-  const removeRecipeFromMyRecipes = (id) => {
-    dispatch({ type: "REMOVE_RECIPE_FROM_MYRECIPES", payload: id });
+  const removeMovieFromWatchlist = (id) => {
+    dispatch({ type: "REMOVE_MOVIE_FROM_WATCHLIST", payload: id });
   };
 
-  const addRecipeToCooked = (hits) => {
-    dispatch({ type: "ADD_RECIPE_TO_COOKED", payload: hits });
+  const addMovieToWatched = (movie) => {
+    dispatch({ type: "ADD_MOVIE_TO_WATCHED", payload: movie });
   };
 
-  const moveToMyRecipes = (hits) => {
-    dispatch({ type: "MOVE_TO_MYRECIPES", payload: hits });
+  const moveToWatchlist = (movie) => {
+    dispatch({ type: "MOVE_TO_WATCHLIST", payload: movie });
   };
 
-  const removeFromCooked = (id) => {
-    dispatch({ type: "REMOVE_FROM_COOKED", payload: id });
+  const removeFromWatched = (id) => {
+    dispatch({ type: "REMOVE_FROM_WATCHED", payload: id });
   };
 
   return (
     <GlobalContext.Provider
       value={{
-        myRecipes: state.myRecipes,
-        cooked: state.cooked,
-        addRecipeToMyRecipes,
-        removeRecipeFromMyRecipes,
-        addRecipeToCooked,
-        moveToMyRecipes,
-        removeFromCooked,
+        watchlist: state.watchlist,
+        watched: state.watched,
+        addMovieToWatchlist,
+        removeMovieFromWatchlist,
+        addMovieToWatched,
+        moveToWatchlist,
+        removeFromWatched,
       }}
     >
       {props.children}

@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 import MovieControls from "./MovieControls";
 
 const MovieCard = ({ movie, type }) => {
@@ -13,6 +13,7 @@ const MovieCard = ({ movie, type }) => {
 
       <MovieControls type={type} movie={movie} />
     </div>
-  );
-};
+  )
+}
+
 export default MovieCard

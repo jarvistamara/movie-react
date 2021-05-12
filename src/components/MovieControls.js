@@ -7,7 +7,7 @@ export const MovieControls = ({ type, movie }) => {
     addMovieToWatched,
     moveToWatchlist,
     removeFromWatched,
-  } = useContext(GlobalContext);
+  } = useContext(GlobalContext)
 
   return (
     <div className="inner-card-controls">
@@ -41,6 +41,6 @@ export const MovieControls = ({ type, movie }) => {
         </>
       )}
     </div>
-  );
-};
+  )
+}
 export default MovieControls

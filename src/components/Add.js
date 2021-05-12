@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import ResultCard from "./ResultCard";
+import React, { useState } from "react"
+import ResultCard from "./ResultCard"
 
 const Add = () => {
-  const [query, setQuery] = useState("");
-  const [results, setResults] = useState([]);
+  const [query, setQuery] = useState("")
+  const [results, setResults] = useState([])
 
   const onChange = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    setQuery(e.target.value);
+    setQuery(e.target.value)
 
     fetch(
       `https://api.themoviedb.org/3/search/movie?api_key=${process.env.APP_KEY}&language=en-US&page=1&include_adult=false&query=${e.target.value}`
@@ -20,8 +20,8 @@ const Add = () => {
         } else {
           setResults([]);
         }
-      });
-  };
+      })
+  }
 
   return (
     <div className="add-page">
@@ -48,6 +48,7 @@ const Add = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
+
 export default Add
